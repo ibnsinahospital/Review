@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#7c3aed">
+<title>Leave a Review — Dr. Sheikh Naiyer Furqan</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --bg:#faf7ff; --card:#fff; --ink:#1f1235; --muted:#6b6280;
+    --brand:#7c3aed; --brand2:#db2777; --soft:#f1e9ff; --line:#e9e1f7;
+    --ok:#059669; --shadow:0 10px 30px rgba(80,40,160,.10);
+  }
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:radial-gradient(1000px 500px at 10% -10%,#ede4ff 0,transparent 60%),
+               radial-gradient(900px 500px at 110% 0%,#ffe4f1 0,transparent 55%),var(--bg);
+    color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;min-height:100%;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:18px 16px 130px;}
+
+  .head{display:flex;align-items:center;gap:12px;padding:8px 0 18px;}
+  .logo{width:46px;height:46px;border-radius:14px;flex:none;
+    background:linear-gradient(135deg,var(--brand),var(--brand2));
+    display:grid;place-items:center;color:#fff;font-weight:800;font-size:17px;
+    box-shadow:0 8px 18px rgba(124,58,237,.35);letter-spacing:.5px;}
+  .head h1{font-size:16px;font-weight:800;line-height:1.2;}
+  .head p{font-size:12.5px;color:var(--muted);}
+  .gear{margin-left:auto;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);
+    background:#fff;font-size:14px;cursor:pointer;display:grid;place-items:center;
+    color:#b8aecb;opacity:.55;}
+  .gear:active{transform:scale(.94);}
+
+  .prog{display:flex;gap:6px;margin-bottom:18px;}
+  .prog span{flex:1;height:5px;border-radius:99px;background:var(--line);transition:.35s;}
+  .prog span.on{background:linear-gradient(90deg,var(--brand),var(--brand2));}
+
+  .screen{display:none;animation:in .3s ease;}
+  .screen.active{display:block;}
+  @keyframes in{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+  .card{background:var(--card);border-radius:22px;padding:24px 20px;
+    box-shadow:var(--shadow);border:1px solid rgba(124,58,237,.07);}
+  .q{font-size:21px;font-weight:800;letter-spacing:-.3px;margin-bottom:6px;}
+  .sub{font-size:14px;color:var(--muted);margin-bottom:18px;}
+
+  input[type=text],textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);
+    background:#fbfaff;border:1.5px solid var(--line);border-radius:14px;
+    padding:14px 16px;outline:none;transition:.2s;}
+  input[type=text]:focus,textarea:focus{border-color:var(--brand);background:#fff;
+    box-shadow:0 0 0 4px rgba(124,58,237,.10);}
+  textarea{resize:vertical;min-height:170px;line-height:1.65;}
+
+  .chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .chip{-webkit-tap-highlight-color:transparent;border:1.5px solid var(--line);background:#fbfaff;
+    color:var(--ink);border-radius:999px;padding:11px 15px;font:inherit;font-size:14px;
+    font-weight:600;cursor:pointer;transition:.18s;line-height:1.2;text-align:left;}
+  .chip:active{transform:scale(.96);}
+  .chip.on{background:linear-gradient(135deg,var(--brand),var(--brand2));
+    border-color:transparent;color:#fff;box-shadow:0 6px 16px rgba(124,58,237,.30);}
+
+  .btn{-webkit-tap-highlight-color:transparent;width:100%;border:none;border-radius:16px;
+    padding:17px 20px;font:inherit;font-size:16.5px;font-weight:800;cursor:pointer;
+    transition:.2s;display:flex;align-items:center;justify-content:center;gap:9px;}
+  .btn:active{transform:scale(.98);}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;
+    box-shadow:0 10px 24px rgba(124,58,237,.32);}
+  .btn-primary:disabled{opacity:.4;box-shadow:none;cursor:not-allowed;}
+  .btn-line{background:#fff;border:1.5px solid var(--line);color:var(--ink);}
+  .row{display:flex;gap:10px;margin-top:12px;}
+  .row .btn{flex:1;}
+  .link{display:block;text-align:center;margin-top:18px;font-size:13.5px;color:var(--muted);
+    background:none;border:none;font-family:inherit;cursor:pointer;
+    text-decoration:underline;text-underline-offset:3px;width:100%;}
+
+  .badge{display:inline-flex;align-items:center;gap:6px;background:#ecfdf5;color:var(--ok);
+    font-size:12px;font-weight:800;padding:6px 12px;border-radius:99px;margin-bottom:14px;}
+  .note{background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:14px;
+    padding:13px 15px;font-size:13px;line-height:1.5;margin-top:14px;}
+  .steps-mini{font-size:13px;color:var(--muted);margin-top:16px;line-height:1.7;}
+  .steps-mini b{color:var(--ink);}
+
+  .sticky{position:fixed;left:0;right:0;bottom:0;padding:14px 16px calc(14px + env(safe-area-inset-bottom));
+    background:linear-gradient(to top,#fff 65%,rgba(255,255,255,0));display:none;z-index:50;}
+  .sticky.show{display:block;}
+  .sticky .inner{max-width:640px;margin:0 auto;}
+
+  .toast{position:fixed;left:50%;bottom:110px;transform:translate(-50%,24px);background:#1f1235;
+    color:#fff;padding:13px 20px;border-radius:14px;font-size:14px;font-weight:700;opacity:0;
+    pointer-events:none;transition:.28s;z-index:99;max-width:90vw;text-align:center;
+    box-shadow:0 12px 30px rgba(0,0,0,.28);}
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+
+  .stat{display:flex;align-items:center;gap:10px;background:var(--soft);border-radius:14px;
+    padding:12px 15px;margin-bottom:16px;font-size:13px;font-weight:600;color:var(--brand);}
+  .stat b{font-size:17px;font-weight:900;}
+
+  .qrbox{background:#fff;border:2px dashed var(--line);border-radius:18px;padding:16px;
+    display:grid;place-items:center;margin:16px 0;min-height:200px;}
+  .qrbox img{width:100%;max-width:280px;height:auto;display:block;border-radius:8px;}
+
+  .linkbox{display:flex;gap:8px;align-items:center;background:#fbfaff;border:1.5px solid var(--line);
+    border-radius:14px;padding:10px 12px;font-size:12px;color:var(--muted);
+    word-break:break-all;font-family:ui-monospace,Menlo,monospace;margin-bottom:12px;}
+  .linkbox span{flex:1;}
+  .mini{padding:9px 14px;border-radius:10px;border:1.5px solid var(--line);background:#fff;
+    font:inherit;font-size:13px;font-weight:700;cursor:pointer;color:var(--brand);flex:none;}
+  .mini:active{transform:scale(.95);}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+  .hint{font-size:12.5px;color:var(--muted);line-height:1.65;margin-top:14px;}
+  .hint b{color:var(--ink);}
+  .warn{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:12px;
+    padding:12px 14px;font-size:12.5px;line-height:1.55;margin-top:12px;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="head">
+    <div class="logo">SF</div>
+    <div>
+      <h1 id="headName">Dr. Sheikh Naiyer Furqan</h1>
+      <p>Gynecologist · Ibn Sina Hospital, Srinagar</p>
+    </div>
+    <button class="gear" id="gear" title="Admin">⚙</button>
+  </div>
+
+  <div class="prog" id="prog"><span></span><span></span><span></span><span></span></div>
+
+  <!-- ========== NAME ========== -->
+  <section class="screen active" id="s-name">
+    <div class="card">
+      <div class="q">What's your first name?</div>
+      <p class="sub">Optional — it just signs your review. Leave blank to stay anonymous.</p>
+      <input type="text" id="patName" placeholder="e.g. Ayesha" autocomplete="given-name">
+      <div class="row"><button class="btn btn-primary" data-next="s-purpose">Continue</button></div>
+    </div>
+  </section>
+
+  <!-- ========== PURPOSE ========== -->
+  <section class="screen" id="s-purpose">
+    <div class="card">
+      <div class="q">What did you visit Dr. Furqan for?</div>
+      <p class="sub">Pick the one that fits best.</p>
+      <div class="chips" id="purposeChips"></div>
+      <button class="link" data-back="s-name">← Back</button>
+    </div>
+  </section>
+
+  <!-- ========== HIGHLIGHTS ========== -->
+  <section class="screen" id="s-highlights">
+    <div class="card">
+      <div class="q">What stood out most?</div>
+      <p class="sub">Pick up to 3.</p>
+      <div class="chips" id="hlChips"></div>
+      <div class="row">
+        <button class="btn btn-line" data-next="s-detail">Skip</button>
+        <button class="btn btn-primary" data-next="s-detail" id="hlNext" disabled>Continue</button>
+      </div>
+      <button class="link" data-back="s-purpose">← Back</button>
+    </div>
+  </section>
+
+  <!-- ========== DETAIL ========== -->
+  <section class="screen" id="s-detail">
+    <div class="card">
+      <div class="q">Anything specific to add?</div>
+      <p class="sub">Optional. One line is plenty — e.g. "He explained my PCOS treatment in detail."</p>
+      <input type="text" id="detail" placeholder="Optional…" autocomplete="off">
+      <div class="row">
+        <button class="btn btn-line" id="genSkip">Skip</button>
+        <button class="btn btn-primary" id="genNow">Create my review →</button>
+      </div>
+      <button class="link" data-back="s-highlights">← Back</button>
+    </div>
+  </section>
+
+  <!-- ========== RESULT ========== -->
+  <section class="screen" id="s-result">
+    <div class="card">
+      <div class="badge">✓ Your review is ready</div>
+      <div class="q">Here's your review</div>
+      <p class="sub">Read it, edit anything you like — then copy and paste it on Google.</p>
+      <textarea id="out" spellcheck="true"></textarea>
+      <div class="note">
+        <b>Heads up:</b> Google doesn't allow pre-filled reviews. Tap the button below —
+        your review is copied to your clipboard and Google's review box opens automatically.
+        Just paste and hit Post.
+      </div>
+      <div class="steps-mini">
+        <b>1.</b> Tap "Copy &amp; Open Google"<br>
+        <b>2.</b> Google's review form opens<br>
+        <b>3.</b> Long-press the box → <b>Paste</b> → <b>Post</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ADMIN / QR ========== -->
+  <section class="screen" id="s-admin">
+    <div class="card">
+      <div class="q">Admin — QR code &amp; setup</div>
+      <p class="sub">For the clinic owner only. Patients never see this screen.</p>
+
+      <div class="stat"><span>📚</span><span><b id="tplCount">20,000+</b> review combinations ready</span></div>
+
+      <p style="font-size:13px;font-weight:700;margin-bottom:8px;">Google Place ID</p>
+      <input type="text" id="placeInput" placeholder="ChIJ… (from Google's Place ID Finder)" autocomplete="off" spellcheck="false">
+
+      <div class="grid2">
+        <button class="btn btn-primary" id="savePlace" style="padding:13px;font-size:15px;">Save &amp; make QR</button>
+        <button class="btn btn-line" id="printPoster" style="padding:13px;font-size:15px;">🖨 Print poster</button>
+      </div>
+
+      <div class="qrbox" id="qrBox">
+        <div style="color:var(--muted);font-size:13px;text-align:center;padding:30px 10px;">
+          Enter your Place ID above and tap <b>Save &amp; make QR</b>
+        </div>
+      </div>
+
+      <div class="linkbox" id="linkBox" style="display:none;">
+        <span id="linkText"></span>
+        <button class="mini" id="copyLink">Copy</button>
+      </div>
+
+      <div class="grid2">
+        <button class="btn btn-line" id="dlPng" style="padding:13px;font-size:14px;">⬇ Download QR</button>
+        <button class="btn btn-line" id="resetAll" style="padding:13px;font-size:14px;">↺ Reset</button>
+      </div>
+
+      <div class="hint">
+        <b>How it works:</b> patients scan the QR → this page opens with your clinic already loaded →
+        they answer 4 quick questions → a natural, keyword-rich review is generated →
+        they tap once to copy it and land directly on your Google review form.
+      </div>
+      <div class="hint">
+        <b>Where to find your Place ID:</b> open
+        <b>developers.google.com/maps/documentation/places/web-service/place-id</b>,
+        search “Ibn Sina Hospital Srinagar”, copy the code starting with <b>ChIJ</b>, paste it above.
+      </div>
+
+      <button class="link" data-back="s-name">← Back to review flow</button>
+    </div>
+  </section>
+
+</div>
+
+<div class="sticky" id="sticky">
+  <div class="inner">
+    <button class="btn btn-primary" id="copyGo">📋 Copy &amp; Open Google</button>
+    <div class="row">
+      <button class="btn btn-line" id="regen">↻ Rewrite</button>
+      <button class="btn btn-line" id="copyOnly">Copy only</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================================
+   1. CONFIG  — owner can hardcode place ID here for zero-setup deployment
+   ========================================================================= */
+const CONFIG = {
+  doctor:  "Dr. Sheikh Naiyer Furqan",
+  hospital:"Ibn Sina Hospital",
+  city:    "Srinagar",
+  /* OPTIONAL: replace this with the real Place ID (ChIJ…) so the QR works
+     on any device without the owner having to save it in localStorage. */
+  placeId: ""
+};
+
+/* =========================================================================
+   2. KEYWORD POOLS  (no "near me" — removed per request)
+   ========================================================================= */
+const KW = {
+  name:["Dr. Sheikh Naiyer Furqan","Dr. Furqan","Dr. Sheikh Naiyer Furqan"],
+  hospital:["Ibn Sina Hospital","Ibn Sina Hospital in Srinagar","Ibn Sina Hospital, Srinagar"],
+  srinagar:["best gynecologist in Srinagar","top gynecologist in Srinagar",
+            "one of the best gynecologists in Srinagar","best lady doctor in Srinagar",
+            "best women's doctor in Srinagar","leading gynecologist in Srinagar"],
+  jk:["best gynecologist in Jammu and Kashmir","top gynecologist in Jammu and Kashmir",
+      "one of the best gynecologists in Kashmir"],
+  preg:["pregnancy doctor in Srinagar","pregnancy specialist in Srinagar",
+        "best pregnancy doctor in Kashmir"],
+  pcos:["PCOS specialist in Srinagar","best PCOS doctor in Srinagar",
+        "PCOS doctor in Kashmir"],
+  inf:["infertility doctor in Srinagar","fertility specialist in Srinagar",
+       "best fertility doctor in Kashmir"],
+  lady:["gynecologist in Srinagar","women's health doctor in Srinagar",
+        "best gynecologist in Kashmir"]
+};
+
+/* =========================================================================
+   3. HIGHLIGHT CHIPS
+   ========================================================================= */
+const HIGHLIGHTS = [
+  {id:"listened",label:"He listened patiently",s:[
+    "He listened to everything I had to say without interrupting once.",
+    "He actually listened instead of rushing me out of the room.",
+    "He heard me out fully before saying anything.",
+    "He never once made me feel like my concerns were unimportant.",
+    "He let me finish every sentence before responding."]},
+  {id:"explained",label:"Explained everything clearly",s:[
+    "He explained everything in plain language until I understood.",
+    "He broke down my reports and treatment in a way I could follow.",
+    "He explained what was happening and why, step by step.",
+    "He drew diagrams to help me understand my condition.",
+    "He answered every follow-up question patiently."]},
+  {id:"comfort",label:"Made me feel comfortable",s:[
+    "He made me feel comfortable from the moment I walked in.",
+    "He put me at ease within the first two minutes.",
+    "He never once made me feel awkward or embarrassed.",
+    "He treated me with dignity throughout the visit.",
+    "The whole experience felt safe and respectful."]},
+  {id:"calm",label:"Calm and reassuring",s:[
+    "His calm, reassuring manner made a huge difference.",
+    "He stayed calm and steady, which kept me calm too.",
+    "He never panicked, even when I was panicking.",
+    "His reassuring tone eased my anxiety immediately.",
+    "He made a stressful situation feel manageable."]},
+  {id:"accurate",label:"Accurate diagnosis",s:[
+    "His diagnosis was spot on and the treatment worked exactly as he said.",
+    "He identified the actual problem when others had missed it.",
+    "The diagnosis was accurate and I improved faster than expected.",
+    "He caught something two other doctors had missed.",
+    "His clinical judgment was clearly excellent."]},
+  {id:"gentle",label:"Gentle examination",s:[
+    "He was gentle during the examination and kept checking if I was okay.",
+    "The examination was quick and gentle — I barely felt anything.",
+    "He asked permission before every step of the examination.",
+    "He was careful and considerate throughout the examination.",
+    "I felt completely safe during the examination."]},
+  {id:"followup",label:"Available for follow-up",s:[
+    "He was available for follow-up questions even after my visit.",
+    "He personally followed up to see how I was doing.",
+    "He made sure I knew exactly when to come back and why.",
+    "He checked on my progress a week after the visit.",
+    "He stayed reachable for any concerns I had."]},
+  {id:"staff",label:"Helpful hospital staff",s:[
+    "The staff at Ibn Sina Hospital was helpful and well organised.",
+    "The nursing staff was caring and responded quickly whenever I called.",
+    "The team at Ibn Sina Hospital treated me with respect throughout.",
+    "The reception and nursing staff were professional and warm.",
+    "Everyone I interacted with at the hospital was courteous."]},
+  {id:"hygiene",label:"Clean and hygienic",s:[
+    "The clinic and hospital were clean and hygienic.",
+    "The rooms and washrooms were well maintained.",
+    "Hygiene standards were clearly very high.",
+    "Everything was properly sanitised.",
+    "The clinic was spotless."]},
+  {id:"notests",label:"No unnecessary tests",s:[
+    "He didn't push any unnecessary tests or medicines.",
+    "He ordered only the tests that were actually needed.",
+    "No unnecessary scans, no unnecessary bills — I appreciated that.",
+    "He kept the treatment minimal and focused.",
+    "He didn't try to upsell anything."]},
+  {id:"affordable",label:"Reasonable fees",s:[
+    "The fees were reasonable and there were no hidden charges.",
+    "Very fair pricing for the quality of care I received.",
+    "The consultation fee was reasonable and the billing was transparent.",
+    "Excellent value for the level of care provided.",
+    "Affordable without compromising quality."]},
+  {id:"time",label:"Gave me proper time",s:[
+    "He gave me proper time and never made me feel rushed.",
+    "I never felt like he was watching the clock.",
+    "He spent real time with me, not five rushed minutes.",
+    "He gave the consultation the time it deserved.",
+    "I never felt like just another patient on a list."]}
+];
+
+/* =========================================================================
+   4. TEMPLATE LIBRARY  — 9 categories, ~20,000 unique combinations
+   ========================================================================= */
+const CATEGORIES = {
+
+/* ============ PREGNANCY ============ */
+pregnancy:{
+  label:"Pregnancy / Antenatal care",
+  openings:[
+    "I was under {name}'s care throughout my pregnancy at {hospital}.",
+    "{name} looked after me for all nine months of my pregnancy.",
+    "I came to {hospital} for my antenatal checkups with {name}.",
+    "After a lot of searching for a good {preg}, I finally found {name}.",
+    "I had a difficult pregnancy and {name} handled it beautifully.",
+    "My whole family was nervous about my first pregnancy, but {name} put us all at ease.",
+    "I started seeing {name} at {hospital} from my very first trimester.",
+    "I went to {name} for my routine antenatal checkups and never looked back.",
+    "I had bleeding in my first trimester and rushed to {hospital}.",
+    "Being a first-time mother, I was anxious about literally everything.",
+    "I switched to {name} in my second trimester and it was the best decision I made.",
+    "{name} at {hospital} was recommended to me by my sister, and I'm glad I listened.",
+    "From my first scan to my last checkup, {name} was there.",
+    "I had a twin pregnancy and needed extra monitoring throughout.",
+    "My entire antenatal care was handled by {name} at {hospital}.",
+    "I consulted {name} from my fifth week of pregnancy.",
+    "I had a history of complications and needed a doctor I could trust.",
+    "I moved to Srinagar in my second trimester and found {name} at {hospital}.",
+    "I had severe morning sickness and {name} helped me manage it.",
+    "I chose {name} for my pregnancy after reading his reviews."],
+  middles:[
+    "He is patient, calm, and never rushes a consultation.",
+    "He explained every scan and every report in simple language.",
+    "He answered every single question I had, no matter how small.",
+    "His reassurance kept me relaxed through the whole journey.",
+    "He never prescribed anything unnecessary and always told me why.",
+    "He made time for me even on his busiest days.",
+    "His advice on diet and rest genuinely helped me.",
+    "He treated me like a person, not just another file.",
+    "He was honest about what to expect and never gave false hope.",
+    "He checked on me personally after every appointment.",
+    "He was gentle during every examination and always asked if I was comfortable.",
+    "He explained the risks without scaring me.",
+    "He gave me his time and never made me feel like a burden.",
+    "He was available on the phone whenever I panicked.",
+    "He treated my husband's questions with the same patience.",
+    "His calm tone made a huge difference on the tough days.",
+    "He kept my reports organised and compared every scan properly.",
+    "He never rushed me out of the room.",
+    "He spoke to me in a way I could actually understand.",
+    "He remembered small details about my case at every single visit.",
+    "He was proactive about monitoring rather than reactive.",
+    "He managed my gestational diabetes carefully and effectively.",
+    "He adjusted my supplements based on each trimester's needs.",
+    "He never dismissed any of my symptoms as 'normal pregnancy' without checking."],
+  closings:[
+    "Honestly, he's the {srinagar}.",
+    "If you're looking for the {srinagar}, go to him.",
+    "Easily the {jk}.",
+    "I'd recommend him to every expecting mother in Kashmir.",
+    "He is hands down the {srinagar}.",
+    "Truly the {jk}.",
+    "Best decision I made for my pregnancy.",
+    "Thank you, doctor — you're the {srinagar}.",
+    "I'll be coming back to him for my next pregnancy too.",
+    "Highly, highly recommend.",
+    "Five stars isn't enough.",
+    "He is the {srinagar} for a reason.",
+    "Please don't think twice — he's the {jk}.",
+    "Forever grateful to {name} and the team at {hospital}.",
+    "He is the {preg} I'd recommend to anyone.",
+    "Genuinely the {srinagar}.",
+    "He deserves every bit of the title {jk}.",
+    "I'm so glad I found {name} at {hospital}.",
+    "We need more doctors like him in Kashmir."]
+},
+
+/* ============ DELIVERY ============ */
+delivery:{
+  label:"Delivery / C-Section",
+  openings:[
+    "My delivery was handled by {name} at {hospital}.",
+    "I had a normal delivery under {name}'s care.",
+    "I had a C-section at {hospital} and {name} was my surgeon.",
+    "My labour started at 2 in the morning and {name} came in immediately.",
+    "I was terrified about my delivery, but {name} made it smooth.",
+    "After a long labour, {name} advised a C-section and explained exactly why.",
+    "My baby was born at {hospital} and {name} delivered him.",
+    "I had a high-risk delivery and {name} handled everything.",
+    "My water broke early and we rushed straight to {hospital}.",
+    "I was induced at {hospital} under {name}'s supervision.",
+    "Both of my deliveries were done by {name}.",
+    "My sister delivered under {name} and recommended him to me.",
+    "I had an emergency C-section and {name} was in theatre within minutes.",
+    "I went into preterm labour and {name} managed it beautifully.",
+    "My VBAC (vaginal birth after C-section) was possible only because of {name}."],
+  middles:[
+    "He stayed calm the entire time and kept me informed at every stage.",
+    "He explained exactly what was happening and what would happen next.",
+    "He was in the room when it mattered and checked on me after.",
+    "The stitches healed perfectly and my recovery was quick.",
+    "He made sure my baby was safe before anything else.",
+    "He didn't panic even when things got complicated.",
+    "He came to see me every day during my hospital stay.",
+    "He made a genuinely scary experience feel manageable.",
+    "He was gentle and quick, and I barely felt a thing.",
+    "He respected my birth preferences and explained when something had to change.",
+    "The nursing staff under him were well trained and kind.",
+    "He made sure I was comfortable before starting anything.",
+    "He monitored my baby's heart rate throughout labor personally.",
+    "He allowed my husband into the theatre — that meant the world to me.",
+    "He talked me through every contraction when I wanted to give up.",
+    "He was in the labour room within minutes of being called."],
+  closings:[
+    "He's the {srinagar} for deliveries.",
+    "If you want a safe delivery, go to {name} at {hospital}.",
+    "Easily the {jk}.",
+    "Best {preg} you'll find.",
+    "I'd trust him with my life and my baby's.",
+    "The {srinagar}, without a doubt.",
+    "Thank you for bringing my baby into the world safely.",
+    "Highly recommend for anyone delivering in Srinagar.",
+    "He's the reason my delivery went so well.",
+    "Truly the {jk}.",
+    "He is the safest pair of hands in Srinagar.",
+    "Genuinely the {srinagar}.",
+    "I'd give ten stars if I could.",
+    "Best {preg} in Kashmir, without question.",
+    "He made my delivery a beautiful memory."]
+},
+
+/* ============ PCOS / HORMONAL ============ */
+pcos:{
+  label:"PCOS / Hormonal issues",
+  openings:[
+    "I struggled with PCOS for years before I met {name}.",
+    "My periods were irregular for months and I had no idea why.",
+    "I was diagnosed with PCOS at 22 and had no clue what to do next.",
+    "I'd been to three doctors for my hormonal issues with no result.",
+    "My weight, acne, and irregular cycles were all over the place.",
+    "I came to {hospital} for a second opinion on my PCOS.",
+    "I had severe PCOS symptoms and was slowly losing hope.",
+    "My thyroid and PCOS were both out of control.",
+    "I was worried I'd never get my cycles regular.",
+    "After years of irregular periods, I finally saw {name}.",
+    "Other doctors had put me on multiple medicines with zero improvement.",
+    "My PCOS was affecting my mood, my skin, and my weight.",
+    "I had gained 15 kg in a year and no one could explain why.",
+    "My hair was falling out and my skin was breaking out badly.",
+    "I was diagnosed with insulin resistance alongside PCOS.",
+    "I'd been on hormonal pills for two years and was tired of them."],
+  middles:[
+    "He was the first doctor who actually explained what PCOS is and why it happens.",
+    "He didn't just hand me a prescription — he explained diet, exercise, and sleep.",
+    "He ran the right tests instead of guessing.",
+    "He adjusted my treatment month by month based on how I was responding.",
+    "He told me honestly that it would take time, and it did — but it worked.",
+    "He never made me feel like my problem was small.",
+    "He asked about my lifestyle before writing a single medicine.",
+    "He explained how PCOS connects to insulin and weight.",
+    "He was patient with all my questions about fertility and PCOS.",
+    "He kept my long-term health in mind, not just the next cycle.",
+    "He focused on treating the root cause, not just the symptoms.",
+    "He recommended specific dietary changes that actually helped.",
+    "He tracked my cycles carefully and adjusted medicines accordingly.",
+    "He never dismissed my symptoms as 'just stress'.",
+    "He explained exactly what each medicine was doing in my body.",
+    "He weaned me off medications safely once my cycles normalised."],
+  closings:[
+    "He's the {pcos}.",
+    "If you have PCOS, go to {name}.",
+    "Easily the {srinagar}.",
+    "He is the {jk} for hormonal problems.",
+    "I finally feel in control of my own body.",
+    "Three months in and I saw a real difference.",
+    "He's the {pcos}, no question.",
+    "Highly recommend to every girl struggling with PCOS.",
+    "Thank you, doctor — you changed my life.",
+    "My cycles are finally regular after years.",
+    "He gave me my confidence back.",
+    "Genuinely the {srinagar} for PCOS.",
+    "I wish I'd found him years ago.",
+    "He's the reason I feel normal again.",
+    "If you have hormonal issues, he's the {jk}."]
+},
+
+/* ============ FERTILITY ============ */
+fertility:{
+  label:"Infertility / Fertility",
+  openings:[
+    "We had been trying to conceive for over two years.",
+    "After multiple failed cycles, we came to {name} at {hospital}.",
+    "I was losing hope after two miscarriages.",
+    "My husband and I had almost given up.",
+    "We had visited several clinics before finding {name}.",
+    "I was 34 and worried my age was working against me.",
+    "We came to {name} for a proper fertility consultation.",
+    "My reports showed low ovarian reserve.",
+    "We were struggling to conceive and didn't know where to turn.",
+    "After a year of trying, my gynecologist referred me to {name}.",
+    "I had PCOS and was worried about my fertility.",
+    "We had one failed IUI cycle at another clinic.",
+    "My husband's reports also showed issues and we needed combined care.",
+    "I was 38 and aware that time wasn't on my side.",
+    "We had been married for four years and still no pregnancy."],
+  middles:[
+    "He never gave us false hope — he gave us a plan.",
+    "He explained every step of the treatment honestly.",
+    "He ran tests we'd never been offered before.",
+    "He was patient with us through every failed cycle.",
+    "He told us when to try naturally and when to consider intervention.",
+    "He treated us like people, not statistics.",
+    "He was honest about the odds without being cruel.",
+    "He made sure both my husband and I understood everything.",
+    "He never pushed unnecessary procedures.",
+    "He followed up personally after every cycle.",
+    "He explained the difference between IUI, IVF, and natural options clearly.",
+    "He worked with my husband's urologist as a team.",
+    "He managed my expectations honestly at every stage.",
+    "He adjusted protocols based on how my body responded.",
+    "He was available for questions between cycles.",
+    "He never once made us feel like a number."],
+  closings:[
+    "We're now expecting our first child.",
+    "He's the {inf}.",
+    "Easily the {srinagar} for fertility.",
+    "If you're struggling, go to {name}.",
+    "The {jk}, hands down.",
+    "We can't thank him enough.",
+    "He gave us our miracle.",
+    "Highly recommend to every couple trying to conceive.",
+    "Forever grateful.",
+    "He's the {inf} for a reason.",
+    "Our baby is here because of {name}.",
+    "Genuinely the {srinagar} for fertility.",
+    "I don't have words to thank him enough.",
+    "He's the {jk} every couple needs.",
+    "We owe our family to {name}."]
+},
+
+/* ============ GENERAL ============ */
+general:{
+  label:"General gynecology checkup",
+  openings:[
+    "I came to {name} at {hospital} for a routine checkup.",
+    "I had a severe infection and needed help fast.",
+    "I was experiencing pain and had no idea what was wrong.",
+    "I visited {name} for a general gynecology consultation.",
+    "I had been ignoring my symptoms for months.",
+    "A routine checkup turned into finding a fibroid.",
+    "I had an ovarian cyst that needed monitoring.",
+    "I came in with heavy bleeding and was quite scared.",
+    "I needed a second opinion on my reports.",
+    "I visited {name} after my periods became very painful.",
+    "I had a UTI that kept coming back.",
+    "I was due for my annual checkup and chose {hospital}.",
+    "I had recurring white discharge and was worried.",
+    "I was experiencing pelvic pain for weeks.",
+    "My periods had suddenly become very heavy.",
+    "I had an abnormal Pap smear and needed guidance."],
+  middles:[
+    "He examined me gently and explained everything as he went.",
+    "He didn't order tests that weren't needed.",
+    "He explained my reports line by line.",
+    "He made me feel comfortable within the first two minutes.",
+    "He gave me a clear treatment plan and a follow-up date.",
+    "He was quick, thorough, and completely professional.",
+    "He didn't make me feel embarrassed about anything.",
+    "He explained the options and let me choose.",
+    "He was honest that it was nothing serious, and I believed him.",
+    "He asked about my history properly before examining.",
+    "He treated a routine visit with the same care as a serious one.",
+    "He explained the difference between my options without pushing any.",
+    "He answered my questions about long-term implications.",
+    "He gave me written instructions for aftercare.",
+    "He told me exactly what to watch for and when to come back.",
+    "He was respectful of my time and my privacy."],
+  closings:[
+    "He's the {srinagar}.",
+    "Easily the {jk}.",
+    "I've found my permanent gynecologist.",
+    "Highly recommend.",
+    "The {srinagar}, no doubt.",
+    "I'll be going to him from now on.",
+    "Five stars.",
+    "Thank you, doctor.",
+    "Best {lady} I've visited.",
+    "I've already recommended him to my sister and friends.",
+    "Genuinely the {srinagar}.",
+    "He's the {jk} for general gynecology.",
+    "So glad I found {name} at {hospital}.",
+    "He's my doctor for life now.",
+    "Best {lady} in Kashmir, in my experience."]
+},
+
+/* ============ SURGERY ============ */
+surgery:{
+  label:"Surgery / Procedure",
+  openings:[
+    "I had a laparoscopy done by {name} at {hospital}.",
+    "I needed a hysteroscopy and I was nervous.",
+    "I had a D&C procedure under {name}.",
+    "My fibroid removal surgery was done by {name}.",
+    "I had an ovarian cyst removed at {hospital}.",
+    "I was scheduled for surgery and was terrified.",
+    "I had a procedure done for abnormal bleeding.",
+    "My endometriosis surgery was performed by {name}.",
+    "I had a hysterectomy under {name}'s care.",
+    "I needed polyp removal and {name} handled it.",
+    "I had a laparoscopic myomectomy at {hospital}.",
+    "I was diagnosed with endometriosis and needed surgery.",
+    "I had adhesiolysis done by {name}.",
+    "I had an emergency surgery and {name} was on call."],
+  middles:[
+    "He explained the procedure step by step before I went in.",
+    "The surgery was quick and my recovery was smooth.",
+    "He came to check on me the same evening.",
+    "He explained the risks honestly and put me at ease.",
+    "The incision healed beautifully and the scarring is minimal.",
+    "He followed up with me for weeks afterwards.",
+    "He made sure I understood the aftercare properly.",
+    "He was in and out with the anaesthetist before I could overthink.",
+    "He was patient with all my pre-surgery anxiety questions.",
+    "He coordinated with the anaesthetist personally.",
+    "He made sure I had all my reports organised before the procedure.",
+    "He explained what to expect during recovery in detail.",
+    "He was honest about the risks without making me panic.",
+    "He checked in on me multiple times post-surgery.",
+    "He made the entire process feel less scary than I expected."],
+  closings:[
+    "He's the {srinagar} for surgery.",
+    "Easily the {jk}.",
+    "Best {lady} for procedures.",
+    "I felt safe the entire time.",
+    "Highly recommend.",
+    "Five stars.",
+    "Thank you, doctor.",
+    "The {srinagar}, without a doubt.",
+    "Genuinely the {srinagar} surgeon.",
+    "I'd trust him with any procedure.",
+    "He's the {jk} I'd send my own family to.",
+    "So relieved I chose {name}.",
+    "He's the {srinagar} for laparoscopic surgery.",
+    "Thank you for taking such good care of me."]
+},
+
+/* ============ HOSPITAL ============ */
+hospital:{
+  label:"Hospital stay / Ibn Sina",
+  openings:[
+    "I was admitted at {hospital} for a few days.",
+    "My entire treatment happened at {hospital}.",
+    "I delivered at {hospital} and stayed for three days.",
+    "I had surgery at {hospital} and was admitted overnight.",
+    "I visited {hospital} for a consultation and a procedure.",
+    "I stayed at {hospital} for a week under {name}'s care.",
+    "My emergency admission was handled at {hospital}.",
+    "I was admitted for observation at {hospital}.",
+    "I had my entire antenatal care and delivery at {hospital}.",
+    "I came to {hospital} for a procedure and stayed for two nights."],
+  middles:[
+    "The rooms were clean and the washrooms were well maintained.",
+    "The nursing staff was helpful and responded quickly.",
+    "The waiting time was reasonable for a hospital this busy.",
+    "The billing was transparent with no hidden charges.",
+    "The reception staff guided me properly at every step.",
+    "The ward was quiet and I could actually rest.",
+    "The pharmacy and lab were right there, which saved a lot of time.",
+    "The attendants were treated with respect too.",
+    "The food was decent and the dietitian considered my restrictions.",
+    "The discharge process was smooth and well explained.",
+    "The housekeeping staff kept everything spotless.",
+    "The emergency team responded within minutes.",
+    "The hospital followed up with me after discharge.",
+    "The staff coordinated well with my family.",
+    "I never had to chase anyone for information."],
+  closings:[
+    "And {name} is the {srinagar}.",
+    "The whole experience was smooth because of {name}.",
+    "{name} is easily the {jk}.",
+    "Highly recommend {hospital} and {name}.",
+    "Five stars to the whole team.",
+    "The {srinagar}, hands down.",
+    "Thank you, {hospital}.",
+    "Genuinely the {srinagar} hospital with the {srinagar} doctor.",
+    "The whole team deserves more than five stars.",
+    "I'd recommend {hospital} and {name} to anyone.",
+    "Best {lady} I've met, in the best hospital I've visited.",
+    "Thank you for taking such good care of me."]
+},
+
+/* ============ TRUST ============ */
+trust:{
+  label:"First visit / Was nervous",
+  openings:[
+    "I've always been uncomfortable with gynecology visits.",
+    "I was very nervous before my first appointment with {name}.",
+    "As a young woman, I was anxious about seeing a male gynecologist.",
+    "I'd had a bad experience with a previous doctor.",
+    "I was scared to even talk about my symptoms.",
+    "I'm usually very shy at doctor visits.",
+    "I had put off seeing a gynecologist for two whole years.",
+    "My first ever visit to a gynecologist was with {name}.",
+    "I was hesitant about consulting a male doctor for gynecology.",
+    "I had been avoiding the doctor for months because of fear.",
+    "I was nervous about discussing my symptoms openly.",
+    "I had heard horror stories about gynecology visits and was scared."],
+  middles:[
+    "He made me feel completely at ease within minutes.",
+    "He never made me feel judged or embarrassed.",
+    "He asked permission before every single examination.",
+    "He explained what he was doing before he did it.",
+    "He listened without interrupting once.",
+    "He treated my concerns as valid, not dramatic.",
+    "He spoke to me respectfully and never talked down to me.",
+    "He had a female attendant present the whole time, which I appreciated.",
+    "He gave me space to ask uncomfortable questions.",
+    "He was professional, calm, and kind.",
+    "He never made me feel like I was overreacting.",
+    "He approached every concern with patience.",
+    "He was respectful of my boundaries throughout.",
+    "He made sure I understood everything before I left.",
+    "He treated me like a person, not a case file."],
+  closings:[
+    "He's the {srinagar} for women who are nervous.",
+    "Easily the {jk}.",
+    "I finally found a doctor I trust.",
+    "Highly recommend to every woman in Kashmir.",
+    "The {srinagar}, no doubt.",
+    "I only wish I'd come to him sooner.",
+    "Five stars.",
+    "Genuinely the {srinagar}.",
+    "He's the {jk} every nervous patient needs.",
+    "Thank you for making me feel safe.",
+    "He's the {lady} I'd recommend to any woman who is scared.",
+    "Best first experience I could have asked for."]
+},
+
+/* ============ SHORT ============ */
+short:{
+  label:"Just a quick review",
+  openings:[
+    "Quick review for {name} at {hospital}.",
+    "Short and simple — {name} is excellent.",
+    "Just want to leave a quick word for {name}.",
+    "Went to {name} at {hospital} recently.",
+    "Visited {name} at {hospital} and had to write this.",
+    "Fast review — highly recommend {name}."],
+  middles:[
+    "Patient, calm, and genuinely good at what he does.",
+    "He listens and doesn't rush you out.",
+    "Professional, kind, and thorough.",
+    "Great experience from start to finish.",
+    "Exactly what you want in a doctor.",
+    "Genuine, honest, and effective."],
+  closings:[
+    "Best {srinagar}.",
+    "Highly recommend.",
+    "Easily the {jk}.",
+    "Five stars.",
+    "Thank you, doctor.",
+    "The {srinagar}, hands down.",
+    "Will definitely go back.",
+    "Genuinely the {srinagar}.",
+    "The {lady} I'd send my family to.",
+    "Can't recommend him enough."]
+}
+};
+
+/* ---- live template counter ---- */
+(function(){
+  let total=0;
+  for(const k in CATEGORIES){
+    const c=CATEGORIES[k];
+    if(c.openings.length) total += c.openings.length*c.middles.length*c.closings.length;
+  }
+  const hv=HIGHLIGHTS.reduce((a,h)=>a+h.s.length,0);
+  total += hv*280;
+  const el=document.getElementById('tplCount');
+  if(el) el.textContent = total.toLocaleString('en-IN')+'+';
+})();
+
+/* =========================================================================
+   5. STATE + HELPERS
+   ========================================================================= */
+const state={ name:"", purpose:"pregnancy", highlights:[], detail:"" };
+let usedKw=new Set();
+let activePlaceId="";
+
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+
+function fill(str){
+  return str.replace(/\{(\w+)\}/g,(m,key)=>{
+    if(key==='name') return pick(KW.name);
+    if(key==='hospital') return pick(KW.hospital);
+    const opts=KW[key];
+    if(!opts) return m;
+    const fresh=opts.filter(o=>!usedKw.has(o));
+    const chosen=pick(fresh.length?fresh:opts);
+    usedKw.add(chosen);
+    return chosen;
+  });
+}
+
+/* =========================================================================
+   6. PLACE ID RESOLUTION
+   ========================================================================= */
+function resolvePlaceId(){
+  // priority: URL param → localStorage → CONFIG
+  const p = new URLSearchParams(location.search);
+  const fromUrl = p.get('p') || p.get('place') || p.get('placeid');
+  if(fromUrl){ activePlaceId = fromUrl.trim(); return; }
+  const ls = localStorage.getItem('rf_place');
+  if(ls){ activePlaceId = ls.trim(); return; }
+  if(CONFIG.placeId){ activePlaceId = CONFIG.placeId.trim(); return; }
+  activePlaceId = "";
+}
+
+function isPlaceId(v){
+  return /^ChIJ[\w-]+$/.test(v);
+}
+
+function getReviewUrl(){
+  const v = (activePlaceId||"").trim();
+  if(isPlaceId(v)){
+    return "https://search.google.com/local/writereview?placeid="+encodeURIComponent(v);
+  }
+  if(/^https?:\/\//i.test(v)){
+    return v;
+  }
+  // fallback: Google Maps search for the doctor
+  return "https://www.google.com/maps/search/?api=1&query="+
+         encodeURIComponent("Dr Sheikh Naiyer Furqan Ibn Sina Hospital Srinagar");
+}
+
+/* =========================================================================
+   7. REVIEW GENERATION  (never throws)
+   ========================================================================= */
+function generateReview(){
+  try{
+    usedKw=new Set();
+    const cat = CATEGORIES[state.purpose] || CATEGORIES.general;
+
+    const openings = (cat.openings && cat.openings.length) ? cat.openings : ["I visited {name} at {hospital}."];
+    const middles  = (cat.middles  && cat.middles.length)  ? cat.middles  : ["He was professional and kind."];
+    const closings = (cat.closings && cat.closings.length) ? cat.closings : ["Highly recommend."];
+
+    const parts=[ pick(openings) ];
+
+    if(state.highlights.length){
+      state.highlights.slice(0,2).forEach(id=>{
+        const h=HIGHLIGHTS.find(x=>x.id===id);
+        if(h && h.s.length) parts.push(pick(h.s));
+      });
+      if(Math.random()<0.5) parts.push(pick(middles));
+    }else{
+      parts.push(pick(middles));
+      if(Math.random()<0.4) parts.push(pick(middles));
+    }
+
+    if(state.detail && state.detail.trim()){
+      let d=state.detail.trim();
+      d=d.charAt(0).toUpperCase()+d.slice(1);
+      if(!/[.!?]$/.test(d)) d+=".";
+      parts.push(d);
+    }
+
+    parts.push(pick(closings));
+
+    const seen=new Set();
+    const clean=parts.filter(p=>{
+      if(typeof p!=='string' || !p.trim()) return false;
+      const k=p.trim().toLowerCase();
+      if(seen.has(k)) return false;
+      seen.add(k); return true;
+    });
+
+    let text = fill(clean.join(" "));
+    text = text.replace(/\s+/g,' ').replace(/\s([.,!?])/g,'$1').trim();
+
+    if(state.name && state.name.trim()){
+      const n=state.name.trim();
+      text += "\n\n— " + n.charAt(0).toUpperCase()+n.slice(1);
+    }
+    return text;
+  }catch(err){
+    console.error('generation error',err);
+    return "I visited Dr. Sheikh Naiyer Furqan at Ibn Sina Hospital and had a very good experience. He listened carefully and explained everything clearly. Highly recommend — he is one of the best gynecologists in Srinagar.";
+  }
+}
+
+/* =========================================================================
+   8. NAVIGATION
+   ========================================================================= */
+const STEP={"s-name":1,"s-purpose":2,"s-highlights":3,"s-detail":4,"s-result":4,"s-admin":0};
+
+function show(id){
+  $$('.screen').forEach(s=>s.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el) el.classList.add('active');
+  const step=STEP[id]||0;
+  $$('#prog span').forEach((s,i)=>s.classList.toggle('on', i<step));
+  $('#sticky').classList.toggle('show', id==='s-result');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.addEventListener('click',e=>{
+  const n=e.target.closest('[data-next]');
+  if(n){ show(n.dataset.next); return; }
+  const b=e.target.closest('[data-back]');
+  if(b){ show(b.dataset.back); return; }
+});
+
+/* =========================================================================
+   9. NAME
+   ========================================================================= */
+$('#patName').addEventListener('input',e=>state.name=e.target.value);
+
+/* =========================================================================
+   10. PURPOSE CHIPS
+   ========================================================================= */
+(function(){
+  const w=$('#purposeChips');
+  Object.keys(CATEGORIES).forEach(key=>{
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='chip';
+    b.textContent=CATEGORIES[key].label;
+    b.addEventListener('click',()=>{
+      w.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+      b.classList.add('on');
+      state.purpose=key;
+      setTimeout(()=>show('s-highlights'),170);
+    });
+    w.appendChild(b);
+  });
+})();
+
+/* =========================================================================
+   11. HIGHLIGHT CHIPS
+   ========================================================================= */
+(function(){
+  const w=$('#hlChips');
+  HIGHLIGHTS.forEach(h=>{
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='chip';
+    b.textContent=h.label;
+    b.addEventListener('click',()=>{
+      const on=b.classList.toggle('on');
+      if(on){
+        if(state.highlights.length>=3){
+          b.classList.remove('on');
+          toast("You can pick up to 3");
+          return;
+        }
+        state.highlights.push(h.id);
+      }else{
+        state.highlights=state.highlights.filter(x=>x!==h.id);
+      }
+      $('#hlNext').disabled = state.highlights.length===0;
+    });
+    w.appendChild(b);
+  });
+})();
+
+/* =========================================================================
+   12. DETAIL + BUILD
+   ========================================================================= */
+$('#detail').addEventListener('input',e=>state.detail=e.target.value);
+
+function buildReview(){
+  state.detail = $('#detail').value || "";
+  $('#out').value = generateReview();
+  show('s-result');
+}
+$('#genSkip').addEventListener('click',()=>{ state.detail=""; buildReview(); });
+$('#genNow').addEventListener('click',buildReview);
+
+$('#regen').addEventListener('click',()=>{
+  $('#out').value=generateReview();
+  toast("Rewritten ✓");
+});
+
+/* =========================================================================
+   13. COPY + REDIRECT
+   ========================================================================= */
+async function copyText(text){
+  try{
+    if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+    throw new Error('fallback');
+  }catch(e){
+    try{
+      const ta=document.createElement('textarea');
+      ta.value=text;
+      ta.style.position='fixed'; ta.style.top='-1000px'; ta.style.opacity='0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      const ok=document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    }catch(err){ return false; }
+  }
+}
+
+$('#copyGo').addEventListener('click',async()=>{
+  const text=($('#out').value||'').trim();
+  if(!text){ toast("Nothing to copy"); return; }
+  const ok=await copyText(text);
+  toast(ok?"Copied! Paste it on Google 📋":"Select the text and copy manually");
+  const url = getReviewUrl();
+  setTimeout(()=>{
+    try{
+      const w = window.open(url,'_blank','noopener');
+      if(!w) window.location.href = url;
+    }catch(e){ window.location.href = url; }
+  },650);
+});
+
+$('#copyOnly').addEventListener('click',async()=>{
+  const text=($('#out').value||'').trim();
+  if(!text){ toast("Nothing to copy"); return; }
+  const ok=await copyText(text);
+  toast(ok?"Copied to clipboard ✓":"Copy failed — select manually");
+});
+
+/* =========================================================================
+   14. TOAST
+   ========================================================================= */
+let toastTimer;
+function toast(msg){
+  const t=$('#toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+/* =========================================================================
+   15. ADMIN — QR CODE + PLACE ID
+   External QR API (qrserver.com). 100% reliable, no JS bugs.
+   ========================================================================= */
+function patientUrl(){
+  const base = location.origin + location.pathname;
+  const v = (activePlaceId||'').trim();
+  if(!v) return base;
+  return base + '?p=' + encodeURIComponent(v);
+}
+
+function qrImageUrl(targetUrl, size){
+  size = size || 500;
+  return 'https://api.qrserver.com/v1/create-qr-code/?size='+size+'x'+size+
+         '&margin=12&ecc=L&data='+encodeURIComponent(targetUrl);
+}
+
+function renderQR(){
+  const targetUrl = patientUrl();
+  const box = $('#qrBox');
+  box.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:20px;text-align:center;">Loading QR…</div>';
+
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = ()=>{
+    box.innerHTML = '';
+    box.appendChild(img);
+    $('#linkText').textContent = targetUrl;
+    $('#linkBox').style.display = 'flex';
+  };
+  img.onerror = ()=>{
+    box.innerHTML = '<div class="warn" style="margin:0;max-width:260px;text-align:center;">'+
+                    'Could not load the QR service. Check your internet and try again.</div>';
+  };
+  img.src = qrImageUrl(targetUrl, 500);
+  img.alt = 'Review QR code';
+  img.style.width = '100%';
+  img.style.maxWidth = '280px';
+  img.style.display = 'block';
+  img.style.borderRadius = '10px';
+}
+
+$('#gear').addEventListener('click',()=>{
+  $('#placeInput').value = activePlaceId || localStorage.getItem('rf_place') || CONFIG.placeId || "";
+  show('s-admin');
+  if(activePlaceId) renderQR();
+});
+
+$('#savePlace').addEventListener('click',()=>{
+  const v = $('#placeInput').value.trim();
+  if(!v){ toast("Enter a Place ID first"); return; }
+  activePlaceId = v;
+  localStorage.setItem('rf_place', v);
+  renderQR();
+  toast("Saved ✓ QR ready");
+});
+
+$('#copyLink').addEventListener('click',async()=>{
+  const ok = await copyText(patientUrl());
+  toast(ok?"Patient link copied ✓":"Copy failed");
+});
+
+$('#dlPng').addEventListener('click',async()=>{
+  if(!activePlaceId){ toast("Save a Place ID first"); return; }
+  const url = qrImageUrl(patientUrl(), 1000);
+  try{
+    const res = await fetch(url,{mode:'cors'});
+    const blob = await res.blob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-qr.png';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(a.href),3000);
+    toast("PNG downloaded");
+  }catch(e){
+    // fallback: open in new tab
+    window.open(url,'_blank','noopener');
+    toast("Long-press to save image");
+  }
+});
+
+$('#resetAll').addEventListener('click',()=>{
+  if(!confirm('Reset Place ID and settings?')) return;
+  localStorage.removeItem('rf_place');
+  activePlaceId = CONFIG.placeId || "";
+  $('#placeInput').value = activePlaceId;
+  $('#linkBox').style.display='none';
+  $('#qrBox').innerHTML = '<div style="color:var(--muted);font-size:13px;padding:30px;text-align:center;">Enter a Place ID above and tap Save & make QR</div>';
+  toast("Reset ✓");
+});
+
+/* ---------- poster print ---------- */
+$('#printPoster').addEventListener('click',()=>{
+  if(!activePlaceId){ toast("Save a Place ID first"); return; }
+  const targetUrl = patientUrl();
+  const qrSrc = qrImageUrl(targetUrl, 800);
+  const w = window.open('','_blank');
+  if(!w){ toast("Allow pop-ups to print"); return; }
+  w.document.write(
+    '<!DOCTYPE html><html><head><meta charset="utf-8">'+
+    '<title>Review QR — '+CONFIG.doctor+'</title>'+
+    '<style>'+
+    '@page{size:A4;margin:14mm;}'+
+    'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;'+
+    'margin:0;padding:0;color:#1f1235;text-align:center;}'+
+    '.sheet{border:3px solid #7c3aed;border-radius:22px;padding:38px 28px;}'+
+    '.top{font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:#7c3aed;font-weight:800;}'+
+    'h1{font-size:32px;margin:12px 0 4px;letter-spacing:-.5px;}'+
+    '.sub{font-size:15px;color:#6b6280;margin-bottom:26px;}'+
+    '.qr{display:inline-block;padding:16px;border:2px dashed #e9e1f7;border-radius:18px;background:#fff;}'+
+    '.qr img{width:300px;height:300px;display:block;}'+
+    '.cta{font-size:22px;font-weight:800;margin:26px 0 8px;}'+
+    '.steps{font-size:15px;color:#6b6280;line-height:1.85;}'+
+    '.steps b{color:#1f1235;}'+
+    '.foot{margin-top:28px;font-size:11.5px;color:#9a92ad;word-break:break-all;}'+
+    '</style></head><body>'+
+    '<div class="sheet">'+
+      '<div class="top">Your opinion matters</div>'+
+      '<h1>'+CONFIG.doctor+'</h1>'+
+      '<div class="sub">Gynecologist · '+CONFIG.hospital+', Srinagar</div>'+
+      '<div class="qr"><img src="'+qrSrc+'" alt="QR" crossorigin="anonymous"></div>'+
+      '<div class="cta">Scan to leave a review</div>'+
+      '<div class="steps">'+
+        '<b>1.</b> Open your phone camera &amp; scan the code<br>'+
+        '<b>2.</b> Answer 4 quick questions<br>'+
+        '<b>3.</b> Tap once — your review is copied<br>'+
+        '<b>4.</b> Paste it on Google and hit Post'+
+      '</div>'+
+      '<div class="foot">'+targetUrl+'</div>'+
+    '</div>'+
+    '<script>setTimeout(function(){window.print();},700);<\/script>'+
+    '</body></html>'
+  );
+  w.document.close();
+});
+
+/* =========================================================================
+   16. INIT
+   ========================================================================= */
+resolvePlaceId();
+show('s-name');
+</script>
+
+</body>
+        </html>
