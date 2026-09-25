@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#7c3aed">
-<title>Leave a Review — Dr. Sheikh Naiyer Furqan</title>
+<title>Leave a Review — Dr. Sheikh Naiyer Furkan</title>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   :root{--bg:#faf7ff;--card:#fff;--ink:#1f1235;--muted:#6b6280;--brand:#7c3aed;
@@ -98,8 +98,6 @@
   .info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;border-radius:14px;
     padding:13px 15px;font-size:12.5px;line-height:1.6;margin-top:12px;}
   .info code{background:#dbeafe;padding:2px 6px;border-radius:6px;font-size:11.5px;}
-  .ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;border-radius:14px;
-    padding:13px 15px;font-size:12.5px;line-height:1.6;margin-bottom:14px;font-weight:600;}
 </style>
 </head>
 <body>
@@ -108,7 +106,7 @@
   <div class="head">
     <div class="logo">SF</div>
     <div>
-      <h1>Dr. Sheikh Naiyer Furqan</h1>
+      <h1>Dr. Sheikh Naiyer Furkan</h1>
       <p>Gynecologist · Ibn Sina Hospital, Srinagar</p>
     </div>
     <button class="gear" id="gear" title="Admin">⚙</button>
@@ -129,7 +127,7 @@
   <!-- PURPOSE -->
   <section class="screen" id="s-purpose">
     <div class="card">
-      <div class="q">What did you visit Dr. Furqan for?</div>
+      <div class="q">What did you visit Dr. Furkan for?</div>
       <p class="sub">Pick the one that fits best.</p>
       <div class="chips" id="purposeChips"></div>
       <button class="link" data-back="s-name">← Back</button>
@@ -190,7 +188,7 @@
       <div class="q">Admin — QR code &amp; setup</div>
       <p class="sub">For the clinic owner only. Patients never see this screen.</p>
 
-      <div class="stat"><span>📚</span><span><b id="tplCount">20,000+</b> review combinations ready</span></div>
+      <div class="stat"><span>📚</span><span><b id="tplCount">40,000+</b> review combinations ready</span></div>
 
       <div id="hostWarn"></div>
 
@@ -221,13 +219,6 @@
       <div class="info">
         <b>Best link to use:</b> <code>https://g.page/r/CdVXmcL2_W--EBM/review</code><br><br>
         Get this from your Google Business Profile → <b>Ask for reviews</b> → <b>Copy</b>.
-        It opens the review box directly. Do <b>not</b> paste the doctor's name with it — just the link alone.
-      </div>
-
-      <div class="hint">
-        <b>If g.page opens Google Maps instead of the review box</b> on Android, use a Place ID instead.
-        Find it at <b>developers.google.com/maps/documentation/places/web-service/place-id</b>
-        (search "Ibn Sina Hospital Srinagar", copy the <b>ChIJ…</b> code).
       </div>
 
       <button class="link" data-back="s-name">← Back to review flow</button>
@@ -249,13 +240,12 @@
 
 <script>
 /* ============================================================
-   CONFIG — hardcoded link so the app works on any device
+   CONFIG
    ============================================================ */
 const CONFIG = {
-  doctor:"Dr. Sheikh Naiyer Furqan",
+  doctor:"Dr. Sheikh Naiyer Furkan",
   hospital:"Ibn Sina Hospital",
   city:"Srinagar",
-  /* The direct review link. Change only if Google gives you a new one. */
   reviewLink:"https://g.page/r/CdVXmcL2_W--EBM/review"
 };
 
@@ -263,15 +253,17 @@ const CONFIG = {
    KEYWORD POOLS
    ============================================================ */
 const KW = {
-  name:["Dr. Sheikh Naiyer Furqan","Dr. Furqan","Dr. Sheikh Naiyer Furqan"],
-  hospital:["Ibn Sina Hospital","Ibn Sina Hospital in Srinagar","Ibn Sina Hospital, Srinagar"],
+  name:["Dr. Sheikh Naiyer Furkan","Dr. Furkan","Dr. Sheikh Naiyer Furkan","Dr. Naiyer Furkan"],
+  hospital:["Ibn Sina Hospital","Ibn Sina Hospital in Srinagar","Ibn Sina Hospital, Srinagar",
+    "Ibn Sina Hospital Srinagar"],
   srinagar:["best gynecologist in Srinagar","top gynecologist in Srinagar",
     "one of the best gynecologists in Srinagar","best lady doctor in Srinagar",
-    "best women's doctor in Srinagar","leading gynecologist in Srinagar"],
+    "best women's doctor in Srinagar","leading gynecologist in Srinagar",
+    "best gynecologist in Kashmir"],
   jk:["best gynecologist in Jammu and Kashmir","top gynecologist in Jammu and Kashmir",
-    "one of the best gynecologists in Kashmir"],
+    "one of the best gynecologists in Kashmir","best gynecologist in the valley"],
   preg:["pregnancy doctor in Srinagar","pregnancy specialist in Srinagar",
-    "best pregnancy doctor in Kashmir"],
+    "best pregnancy doctor in Kashmir","top pregnancy doctor in Srinagar"],
   pcos:["PCOS specialist in Srinagar","best PCOS doctor in Srinagar","PCOS doctor in Kashmir"],
   inf:["infertility doctor in Srinagar","fertility specialist in Srinagar",
     "best fertility doctor in Kashmir"],
@@ -286,66 +278,111 @@ const HIGHLIGHTS = [
     "He listened to everything I had to say without interrupting once.",
     "He actually listened instead of rushing me out of the room.",
     "He heard me out fully before saying anything.",
-    "He never once made me feel like my concerns were unimportant."]},
+    "He never once made me feel like my concerns were unimportant.",
+    "He gave me his full attention from start to finish."]},
   {id:"explained",label:"Explained everything clearly",s:[
     "He explained everything in plain language until I understood.",
     "He broke down my reports and treatment in a way I could follow.",
     "He explained what was happening and why, step by step.",
-    "He answered every follow-up question patiently."]},
+    "He answered every follow-up question patiently.",
+    "He used simple words instead of medical jargon."]},
   {id:"comfort",label:"Made me feel comfortable",s:[
     "He made me feel comfortable from the moment I walked in.",
     "He put me at ease within the first two minutes.",
     "He never once made me feel awkward or embarrassed.",
-    "The whole experience felt safe and respectful."]},
+    "The whole experience felt safe and respectful.",
+    "He treated me with dignity throughout the visit."]},
   {id:"calm",label:"Calm and reassuring",s:[
     "His calm, reassuring manner made a huge difference.",
     "He stayed calm and steady, which kept me calm too.",
     "His reassuring tone eased my anxiety immediately.",
-    "He made a stressful situation feel manageable."]},
+    "He made a stressful situation feel manageable.",
+    "He never rushed and never seemed stressed."]},
   {id:"accurate",label:"Accurate diagnosis",s:[
     "His diagnosis was spot on and the treatment worked exactly as he said.",
     "He identified the actual problem when others had missed it.",
     "The diagnosis was accurate and I improved faster than expected.",
-    "He caught something two other doctors had missed."]},
+    "He caught something two other doctors had missed.",
+    "His clinical judgment was clearly excellent."]},
   {id:"gentle",label:"Gentle examination",s:[
     "He was gentle during the examination and kept checking if I was okay.",
     "The examination was quick and gentle — I barely felt anything.",
     "He asked permission before every step of the examination.",
-    "I felt completely safe during the examination."]},
+    "I felt completely safe during the examination.",
+    "He was careful and considerate throughout."]},
   {id:"followup",label:"Available for follow-up",s:[
     "He was available for follow-up questions even after my visit.",
     "He personally followed up to see how I was doing.",
     "He made sure I knew exactly when to come back and why.",
-    "He checked on my progress a week after the visit."]},
+    "He checked on my progress a week after the visit.",
+    "He stayed reachable for any concerns I had."]},
   {id:"staff",label:"Helpful hospital staff",s:[
     "The staff at Ibn Sina Hospital was helpful and well organised.",
     "The nursing staff was caring and responded quickly whenever I called.",
     "The team at Ibn Sina Hospital treated me with respect throughout.",
-    "Everyone I interacted with at the hospital was courteous."]},
+    "Everyone I interacted with at Ibn Sina Hospital was courteous.",
+    "The reception and nursing staff at Ibn Sina Hospital were professional."]},
   {id:"hygiene",label:"Clean and hygienic",s:[
-    "The clinic and hospital were clean and hygienic.",
-    "The rooms and washrooms were well maintained.",
-    "Hygiene standards were clearly very high.",
-    "Everything was properly sanitised."]},
+    "Ibn Sina Hospital was clean and hygienic.",
+    "The rooms and washrooms at Ibn Sina Hospital were well maintained.",
+    "Hygiene standards at Ibn Sina Hospital were clearly very high.",
+    "Everything at Ibn Sina Hospital was properly sanitised.",
+    "Ibn Sina Hospital was spotless."]},
   {id:"notests",label:"No unnecessary tests",s:[
     "He didn't push any unnecessary tests or medicines.",
     "He ordered only the tests that were actually needed.",
     "No unnecessary scans, no unnecessary bills — I appreciated that.",
-    "He kept the treatment minimal and focused."]},
+    "He kept the treatment minimal and focused.",
+    "He didn't try to upsell anything."]},
   {id:"affordable",label:"Reasonable fees",s:[
     "The fees were reasonable and there were no hidden charges.",
     "Very fair pricing for the quality of care I received.",
     "The consultation fee was reasonable and the billing was transparent.",
+    "Excellent value for the level of care provided.",
     "Affordable without compromising quality."]},
   {id:"time",label:"Gave me proper time",s:[
     "He gave me proper time and never made me feel rushed.",
     "I never felt like he was watching the clock.",
     "He spent real time with me, not five rushed minutes.",
+    "He gave the consultation the time it deserved.",
     "I never felt like just another patient on a list."]}
 ];
 
 /* ============================================================
-   TEMPLATE LIBRARY
+   IBN SINA HOSPITAL MENTIONS
+   These get injected into every review if not already present,
+   guaranteeing the hospital name appears in every single review.
+   ============================================================ */
+const IBN_SINA_MENTIONS = [
+  "Ibn Sina Hospital itself was clean and well organised.",
+  "The staff at Ibn Sina Hospital were supportive throughout.",
+  "Ibn Sina Hospital made the whole experience smooth.",
+  "Everyone at Ibn Sina Hospital treated me with respect.",
+  "Ibn Sina Hospital is a well-managed facility.",
+  "The nursing team at Ibn Sina Hospital was caring and attentive.",
+  "Ibn Sina Hospital was well equipped for my treatment.",
+  "I felt safe throughout my time at Ibn Sina Hospital.",
+  "Ibn Sina Hospital maintained excellent hygiene standards.",
+  "The reception and support staff at Ibn Sina Hospital were very helpful.",
+  "Ibn Sina Hospital runs efficiently — from booking to billing.",
+  "Everything at Ibn Sina Hospital was well coordinated.",
+  "The team at Ibn Sina Hospital was punctual and professional.",
+  "Ibn Sina Hospital is a clean and well-run facility.",
+  "My entire experience at Ibn Sina Hospital was positive.",
+  "Ibn Sina Hospital's staff were courteous and organised.",
+  "The environment at Ibn Sina Hospital was calm and reassuring.",
+  "Ibn Sina Hospital handled everything with professionalism.",
+  "The nurses at Ibn Sina Hospital were kind and efficient.",
+  "Ibn Sina Hospital is easily one of the best-run hospitals in Srinagar.",
+  "The whole team at Ibn Sina Hospital deserves credit.",
+  "Ibn Sina Hospital was neat, organised, and welcoming.",
+  "From the front desk to the ward, Ibn Sina Hospital was excellent.",
+  "The support staff at Ibn Sina Hospital made me feel at home.",
+  "Ibn Sina Hospital is well maintained and clean throughout."
+];
+
+/* ============================================================
+   TEMPLATE LIBRARY  —  expanded, 40,000+ unique combinations
    ============================================================ */
 const CATEGORIES = {
 pregnancy:{label:"Pregnancy / Antenatal care",
@@ -369,7 +406,17 @@ pregnancy:{label:"Pregnancy / Antenatal care",
   "I had a history of complications and needed a doctor I could trust.",
   "I moved to Srinagar in my second trimester and found {name} at {hospital}.",
   "I had severe morning sickness and {name} helped me manage it.",
-  "I chose {name} for my pregnancy after reading his reviews."],
+  "I chose {name} for my pregnancy after reading his reviews.",
+  "I was in my late thirties and worried about a high-risk pregnancy.",
+  "My first pregnancy ended in a miscarriage, so I was extremely cautious this time.",
+  "I had gestational diabetes and needed careful monitoring throughout.",
+  "I was carrying twins and my anxiety was through the roof.",
+  "I had a low-lying placenta that needed constant monitoring.",
+  "I came to {name} at {hospital} for a second opinion on my antenatal care.",
+  "I had severe back pain during pregnancy and {name} helped me manage it.",
+  "My husband was posted outside Srinagar and I managed my entire pregnancy with {name}'s help.",
+  "I was diagnosed with anaemia during pregnancy and {name} managed it carefully.",
+  "I had a very smooth pregnancy because of {name}'s guidance and regular checkups."],
  middles:[
   "He is patient, calm, and never rushes a consultation.",
   "He explained every scan and every report in simple language.",
@@ -393,7 +440,16 @@ pregnancy:{label:"Pregnancy / Antenatal care",
   "He remembered small details about my case at every single visit.",
   "He was proactive about monitoring rather than reactive.",
   "He managed my gestational diabetes carefully and effectively.",
-  "He adjusted my supplements based on each trimester's needs."],
+  "He adjusted my supplements based on each trimester's needs.",
+  "The staff at Ibn Sina Hospital was cooperative throughout my pregnancy.",
+  "Ibn Sina Hospital was clean, well maintained, and comfortable.",
+  "Every visit to Ibn Sina Hospital felt smooth and organised.",
+  "The team at Ibn Sina Hospital supported me through every trimester.",
+  "Ibn Sina Hospital's nursing staff was caring and attentive.",
+  "I never had to wait long at Ibn Sina Hospital — everything was on time.",
+  "Ibn Sina Hospital was well equipped for all my scans and tests.",
+  "The environment at Ibn Sina Hospital kept me calm throughout.",
+  "Ibn Sina Hospital handled every scan and report efficiently."],
  closings:[
   "Honestly, he's the {srinagar}.","If you're looking for the {srinagar}, go to him.",
   "Easily the {jk}.","I'd recommend him to every expecting mother in Kashmir.",
@@ -403,7 +459,9 @@ pregnancy:{label:"Pregnancy / Antenatal care",
   "Five stars isn't enough.","He is the {srinagar} for a reason.",
   "Please don't think twice — he's the {jk}.","Forever grateful to {name} and the team at {hospital}.",
   "He is the {preg} I'd recommend to anyone.","Genuinely the {srinagar}.",
-  "I'm so glad I found {name} at {hospital}.","We need more doctors like him in Kashmir."]},
+  "I'm so glad I found {name} at {hospital}.","We need more doctors like him in Kashmir.",
+  "If you're pregnant in Srinagar, go to {name} at {hospital}.","He made my pregnancy a beautiful memory.",
+  "I can't imagine going through my pregnancy with anyone else."]},
 
 delivery:{label:"Delivery / C-Section",
  openings:[
@@ -420,7 +478,12 @@ delivery:{label:"Delivery / C-Section",
   "Both of my deliveries were done by {name}.",
   "My sister delivered under {name} and recommended him to me.",
   "I had an emergency C-section and {name} was in theatre within minutes.",
-  "I went into preterm labour and {name} managed it beautifully."],
+  "I went into preterm labour and {name} managed it beautifully.",
+  "My baby was in breech position and {name} handled the delivery expertly.",
+  "I had twins and {name} delivered both of them safely.",
+  "I had a VBAC (vaginal birth after C-section) under {name}'s care.",
+  "My labour was induced at 39 weeks and {name} monitored me the whole time.",
+  "I had a postpartum haemorrhage and {name} acted quickly to control it."],
  middles:[
   "He stayed calm the entire time and kept me informed at every stage.",
   "He explained exactly what was happening and what would happen next.",
@@ -433,13 +496,25 @@ delivery:{label:"Delivery / C-Section",
   "He respected my birth preferences and explained when something had to change.",
   "The nursing staff under him were well trained and kind.",
   "He made sure I was comfortable before starting anything.",
-  "He monitored my baby's heart rate throughout labor personally."],
+  "He monitored my baby's heart rate throughout labor personally.",
+  "The labour ward at Ibn Sina Hospital was clean and well maintained.",
+  "The nurses at Ibn Sina Hospital were with me through every contraction.",
+  "Ibn Sina Hospital's team was fully prepared for any complication.",
+  "Ibn Sina Hospital handled my emergency admission smoothly.",
+  "Every staff member at Ibn Sina Hospital was helpful and reassuring.",
+  "Ibn Sina Hospital's operation theatre was well equipped.",
+  "The recovery room at Ibn Sina Hospital was comfortable and quiet.",
+  "Ibn Sina Hospital made sure my family was informed throughout the delivery.",
+  "Ibn Sina Hospital's team coordinated flawlessly during my C-section.",
+  "I felt completely safe at Ibn Sina Hospital throughout the delivery."],
  closings:[
   "He's the {srinagar} for deliveries.","If you want a safe delivery, go to {name} at {hospital}.",
   "Easily the {jk}.","Best {preg} you'll find.","I'd trust him with my life and my baby's.",
   "The {srinagar}, without a doubt.","Thank you for bringing my baby into the world safely.",
   "Highly recommend for anyone delivering in Srinagar.","He's the reason my delivery went so well.",
-  "Truly the {jk}.","He is the safest pair of hands in Srinagar.","I'd give ten stars if I could."]},
+  "Truly the {jk}.","He is the safest pair of hands in Srinagar.","I'd give ten stars if I could.",
+  "If you're delivering in Srinagar, {name} at {hospital} is the one.","He made my delivery a beautiful memory.",
+  "My baby is here because of {name}.","I still get emotional thinking about how well he handled everything."]},
 
 pcos:{label:"PCOS / Hormonal issues",
  openings:[
@@ -455,7 +530,14 @@ pcos:{label:"PCOS / Hormonal issues",
   "Other doctors had put me on multiple medicines with zero improvement.",
   "I had gained 15 kg in a year and no one could explain why.",
   "I was diagnosed with insulin resistance alongside PCOS.",
-  "I'd been on hormonal pills for two years and was tired of them."],
+  "I'd been on hormonal pills for two years and was tired of them.",
+  "My facial hair and acne were getting worse and I needed real help.",
+  "I was told I couldn't conceive because of PCOS, but I refused to believe it.",
+  "I had heavy, painful periods that kept me in bed for days.",
+  "My mood swings were affecting my marriage and my work.",
+  "I was losing hair rapidly and no one seemed to know why.",
+  "I had tried every fad diet and nothing worked.",
+  "I came to {name} at {hospital} after reading about his approach to PCOS."],
  middles:[
   "He was the first doctor who actually explained what PCOS is and why it happens.",
   "He didn't just hand me a prescription — he explained diet, exercise, and sleep.",
@@ -468,14 +550,24 @@ pcos:{label:"PCOS / Hormonal issues",
   "He was patient with all my questions about fertility and PCOS.",
   "He focused on treating the root cause, not just the symptoms.",
   "He recommended specific dietary changes that actually helped.",
-  "He tracked my cycles carefully and adjusted medicines accordingly."],
+  "He tracked my cycles carefully and adjusted medicines accordingly.",
+  "The lab staff at Ibn Sina Hospital was efficient and friendly.",
+  "Ibn Sina Hospital's team understood PCOS and its complexities.",
+  "Every follow-up at Ibn Sina Hospital was smooth and unhurried.",
+  "Ibn Sina Hospital made all my testing and follow-ups easy.",
+  "The nursing staff at Ibn Sina Hospital was encouraging through my treatment.",
+  "Ibn Sina Hospital's pharmacy was well stocked and convenient.",
+  "Ibn Sina Hospital's environment made a difficult journey feel manageable.",
+  "The team at Ibn Sina Hospital never dismissed my concerns."],
  closings:[
   "He's the {pcos}.","If you have PCOS, go to {name}.","Easily the {srinagar}.",
   "He is the {jk} for hormonal problems.","I finally feel in control of my own body.",
   "Three months in and I saw a real difference.","He's the {pcos}, no question.",
   "Highly recommend to every girl struggling with PCOS.","Thank you, doctor — you changed my life.",
   "My cycles are finally regular after years.","Genuinely the {srinagar} for PCOS.",
-  "I wish I'd found him years ago.","He's the reason I feel normal again."]},
+  "I wish I'd found him years ago.","He's the reason I feel normal again.",
+  "If you have PCOS in Srinagar, do yourself a favour and go to {name}.",
+  "He gave me my confidence back.","My skin, my weight, my mood — all improving."]},
 
 fertility:{label:"Infertility / Fertility",
  openings:[
@@ -490,7 +582,15 @@ fertility:{label:"Infertility / Fertility",
   "We were struggling to conceive and didn't know where to turn.",
   "After a year of trying, my gynecologist referred me to {name}.",
   "I had PCOS and was worried about my fertility.",
-  "We had one failed IUI cycle at another clinic."],
+  "We had one failed IUI cycle at another clinic.",
+  "I was 38 and aware that time wasn't on my side.",
+  "We had been married for four years and still no pregnancy.",
+  "My husband's reports also showed issues and we needed combined care.",
+  "I had blocked fallopian tubes and was told IVF was the only option.",
+  "We had gone through one failed IVF cycle before meeting {name}.",
+  "My AMH levels were low and I was told my chances were slim.",
+  "Both my husband and I were in our late thirties.",
+  "We came to {name} at {hospital} as our last hope."],
  middles:[
   "He never gave us false hope — he gave us a plan.",
   "He explained every step of the treatment honestly.",
@@ -503,13 +603,22 @@ fertility:{label:"Infertility / Fertility",
   "He never pushed unnecessary procedures.",
   "He followed up personally after every cycle.",
   "He explained the difference between IUI, IVF, and natural options clearly.",
-  "He adjusted protocols based on how my body responded."],
+  "He adjusted protocols based on how my body responded.",
+  "The fertility team at Ibn Sina Hospital was well trained and supportive.",
+  "Ibn Sina Hospital handled all our scans and blood work efficiently.",
+  "Ibn Sina Hospital's environment made a difficult journey more bearable.",
+  "The nursing staff at Ibn Sina Hospital was empathetic throughout.",
+  "Ibn Sina Hospital coordinated everything we needed under one roof.",
+  "Every visit to Ibn Sina Hospital was organised and stress-free.",
+  "Ibn Sina Hospital's lab reports were accurate and quick.",
+  "The team at Ibn Sina Hospital treated us with genuine care."],
  closings:[
   "We're now expecting our first child.","He's the {inf}.","Easily the {srinagar} for fertility.",
   "If you're struggling, go to {name}.","The {jk}, hands down.","We can't thank him enough.",
   "He gave us our miracle.","Highly recommend to every couple trying to conceive.",
   "Forever grateful.","He's the {inf} for a reason.","Our baby is here because of {name}.",
-  "I don't have words to thank him enough."]},
+  "I don't have words to thank him enough.","If you're struggling with infertility, see {name} at {hospital}.",
+  "He restored our hope when everyone else had given up."]},
 
 general:{label:"General gynecology checkup",
  openings:[
@@ -527,7 +636,14 @@ general:{label:"General gynecology checkup",
   "I was due for my annual checkup and chose {hospital}.",
   "I had recurring white discharge and was worried.",
   "I was experiencing pelvic pain for weeks.",
-  "I had an abnormal Pap smear and needed guidance."],
+  "I had an abnormal Pap smear and needed guidance.",
+  "I had fibroids causing heavy periods and needed treatment.",
+  "I was experiencing pain during intercourse and needed help.",
+  "I had an ovarian cyst that was growing and needed monitoring.",
+  "My periods had stopped suddenly and I was worried.",
+  "I was going through perimenopause and needed guidance.",
+  "I had a family history of cervical cancer and wanted regular screening.",
+  "I had severe menstrual cramps that painkillers weren't helping."],
  middles:[
   "He examined me gently and explained everything as he went.",
   "He didn't order tests that weren't needed.",
@@ -540,13 +656,23 @@ general:{label:"General gynecology checkup",
   "He was honest that it was nothing serious, and I believed him.",
   "He asked about my history properly before examining.",
   "He treated a routine visit with the same care as a serious one.",
-  "He gave me written instructions for aftercare."],
+  "He gave me written instructions for aftercare.",
+  "The reception at Ibn Sina Hospital was efficient.",
+  "Ibn Sina Hospital's consultation rooms were clean and private.",
+  "The entire process at Ibn Sina Hospital was smooth.",
+  "Ibn Sina Hospital's staff were polite and professional.",
+  "My wait time at Ibn Sina Hospital was short.",
+  "Ibn Sina Hospital was well organised from start to finish.",
+  "The team at Ibn Sina Hospital made my visit comfortable.",
+  "Ibn Sina Hospital's diagnostic services were quick and accurate."],
  closings:[
   "He's the {srinagar}.","Easily the {jk}.","I've found my permanent gynecologist.",
   "Highly recommend.","The {srinagar}, no doubt.","I'll be going to him from now on.",
   "Five stars.","Thank you, doctor.","Best {lady} I've visited.",
   "I've already recommended him to my sister and friends.","Genuinely the {srinagar}.",
-  "He's the {jk} for general gynecology.","He's my doctor for life now."]},
+  "He's the {jk} for general gynecology.","He's my doctor for life now.",
+  "If you're in Srinagar and need a gynecologist, see {name} at {hospital}.",
+  "Best gynecologist experience I've had in years."]},
 
 surgery:{label:"Surgery / Procedure",
  openings:[
@@ -561,7 +687,13 @@ surgery:{label:"Surgery / Procedure",
   "I had a hysterectomy under {name}'s care.",
   "I needed polyp removal and {name} handled it.",
   "I had a laparoscopic myomectomy at {hospital}.",
-  "I was diagnosed with endometriosis and needed surgery."],
+  "I was diagnosed with endometriosis and needed surgery.",
+  "I had adhesiolysis done by {name}.",
+  "I had an emergency surgery and {name} was on call.",
+  "I had a large ovarian cyst that needed surgical removal.",
+  "I had cervical polyps that needed removal under anaesthesia.",
+  "My septate uterus was corrected surgically by {name}.",
+  "I had a complicated fibroid surgery that other doctors refused to do."],
  middles:[
   "He explained the procedure step by step before I went in.",
   "The surgery was quick and my recovery was smooth.",
@@ -573,13 +705,23 @@ surgery:{label:"Surgery / Procedure",
   "He was patient with all my pre-surgery anxiety questions.",
   "He coordinated with the anaesthetist personally.",
   "He explained what to expect during recovery in detail.",
-  "He checked in on me multiple times post-surgery."],
+  "He checked in on me multiple times post-surgery.",
+  "Ibn Sina Hospital's operation theatre was spotless and modern.",
+  "The surgical team at Ibn Sina Hospital was highly skilled.",
+  "Ibn Sina Hospital handled my pre-op and post-op care smoothly.",
+  "The recovery ward at Ibn Sina Hospital was comfortable.",
+  "Ibn Sina Hospital's nursing staff monitored me carefully after surgery.",
+  "Every step at Ibn Sina Hospital was well organised.",
+  "Ibn Sina Hospital's anaesthesia team was reassuring.",
+  "The discharge process at Ibn Sina Hospital was clear and quick.",
+  "Ibn Sina Hospital followed up with me after my procedure."],
  closings:[
   "He's the {srinagar} for surgery.","Easily the {jk}.","Best {lady} for procedures.",
   "I felt safe the entire time.","Highly recommend.","Five stars.","Thank you, doctor.",
   "The {srinagar}, without a doubt.","Genuinely the {srinagar} surgeon.",
   "I'd trust him with any procedure.","He's the {jk} I'd send my own family to.",
-  "Thank you for taking such good care of me."]},
+  "Thank you for taking such good care of me.","If you need surgery in Srinagar, go to {name} at {hospital}.",
+  "He made a scary procedure feel manageable."]},
 
 hospital:{label:"Hospital stay / Ibn Sina",
  openings:[
@@ -590,7 +732,11 @@ hospital:{label:"Hospital stay / Ibn Sina",
   "I visited {hospital} for a consultation and a procedure.",
   "I stayed at {hospital} for a week under {name}'s care.",
   "My emergency admission was handled at {hospital}.",
-  "I was admitted for observation at {hospital}."],
+  "I was admitted for observation at {hospital}.",
+  "I had my entire antenatal care and delivery at {hospital}.",
+  "I came to {hospital} for a procedure and stayed for two nights.",
+  "I was admitted at {hospital} for a laparoscopic procedure.",
+  "My family chose {hospital} based on its reputation, and it lived up to it."],
  middles:[
   "The rooms were clean and the washrooms were well maintained.",
   "The nursing staff was helpful and responded quickly.",
@@ -603,14 +749,21 @@ hospital:{label:"Hospital stay / Ibn Sina",
   "The discharge process was smooth and well explained.",
   "The housekeeping staff kept everything spotless.",
   "The emergency team responded within minutes.",
-  "The hospital followed up with me after discharge."],
+  "The hospital followed up with me after discharge.",
+  "The food was decent and the dietitian considered my restrictions.",
+  "The staff coordinated well with my family.",
+  "I never had to chase anyone for information.",
+  "The doctors visited regularly and kept me updated.",
+  "The nursing care was round-the-clock and attentive.",
+  "The facilities were modern and well maintained."],
  closings:[
   "And {name} is the {srinagar}.","The whole experience was smooth because of {name}.",
   "{name} is easily the {jk}.","Highly recommend {hospital} and {name}.",
   "Five stars to the whole team.","The {srinagar}, hands down.","Thank you, {hospital}.",
   "The whole team deserves more than five stars.",
   "I'd recommend {hospital} and {name} to anyone.",
-  "Best {lady} I've met, in the best hospital I've visited."]},
+  "Best {lady} I've met, in the best hospital I've visited.",
+  "Genuinely the best hospital experience I've had in Srinagar."]},
 
 trust:{label:"First visit / Was nervous",
  openings:[
@@ -624,7 +777,11 @@ trust:{label:"First visit / Was nervous",
   "My first ever visit to a gynecologist was with {name}.",
   "I was hesitant about consulting a male doctor for gynecology.",
   "I had been avoiding the doctor for months because of fear.",
-  "I had heard horror stories about gynecology visits and was scared."],
+  "I had heard horror stories about gynecology visits and was scared.",
+  "I come from a conservative family and was nervous about discussing intimate issues.",
+  "I was worried about being judged for my symptoms.",
+  "I had never had a proper gynecology consultation before.",
+  "I was extremely anxious about the examination process."],
  middles:[
   "He made me feel completely at ease within minutes.",
   "He never made me feel judged or embarrassed.",
@@ -637,32 +794,49 @@ trust:{label:"First visit / Was nervous",
   "He gave me space to ask uncomfortable questions.",
   "He was professional, calm, and kind.",
   "He never made me feel like I was overreacting.",
-  "He was respectful of my boundaries throughout."],
+  "He was respectful of my boundaries throughout.",
+  "The environment at Ibn Sina Hospital felt safe and private.",
+  "Ibn Sina Hospital respected my privacy throughout the visit.",
+  "Ibn Sina Hospital's staff made me feel comfortable from the moment I walked in.",
+  "The team at Ibn Sina Hospital never made me feel judged.",
+  "Ibn Sina Hospital maintained a very respectful atmosphere.",
+  "Ibn Sina Hospital's consultation rooms were private and quiet."],
  closings:[
   "He's the {srinagar} for women who are nervous.","Easily the {jk}.",
   "I finally found a doctor I trust.","Highly recommend to every woman in Kashmir.",
   "The {srinagar}, no doubt.","I only wish I'd come to him sooner.","Five stars.",
   "Genuinely the {srinagar}.","He's the {jk} every nervous patient needs.",
-  "Thank you for making me feel safe.","Best first experience I could have asked for."]},
+  "Thank you for making me feel safe.","Best first experience I could have asked for.",
+  "If you're nervous about gynecology visits, go to {name} at {hospital}."]},
 
 short:{label:"Just a quick review",
  openings:[
-  "Quick review for {name} at {hospital}.","Short and simple — {name} is excellent.",
-  "Just want to leave a quick word for {name}.","Went to {name} at {hospital} recently.",
+  "Quick review for {name} at {hospital}.",
+  "Short and simple — {name} is excellent.",
+  "Just want to leave a quick word for {name}.",
+  "Went to {name} at {hospital} recently.",
   "Visited {name} at {hospital} and had to write this.",
-  "Fast review — highly recommend {name}."],
+  "Fast review — highly recommend {name}.",
+  "Just left {hospital} and had to review.",
+  "Brief but honest — {name} is great.",
+  "Five stars for {name} at {hospital}."],
  middles:[
   "Patient, calm, and genuinely good at what he does.",
-  "He listens and doesn't rush you out.","Professional, kind, and thorough.",
-  "Great experience from start to finish.","Exactly what you want in a doctor.",
-  "Genuine, honest, and effective."],
+  "He listens and doesn't rush you out.",
+  "Professional, kind, and thorough.",
+  "Great experience from start to finish.",
+  "Exactly what you want in a doctor.",
+  "Genuine, honest, and effective.",
+  "Ibn Sina Hospital was clean and efficient.",
+  "The whole team at Ibn Sina Hospital was great."],
  closings:[
   "Best {srinagar}.","Highly recommend.","Easily the {jk}.","Five stars.",
   "Thank you, doctor.","The {srinagar}, hands down.","Will definitely go back.",
   "Genuinely the {srinagar}.","The {lady} I'd send my family to.",
-  "Can't recommend him enough."]}
+  "Can't recommend him enough.","If you need a gynecologist in Srinagar, go to him."]}
 };
 
+/* ---- live template counter ---- */
 (function(){
   let total=0;
   for(const k in CATEGORIES){
@@ -670,7 +844,7 @@ short:{label:"Just a quick review",
     if(c.openings.length) total += c.openings.length*c.middles.length*c.closings.length;
   }
   const hv=HIGHLIGHTS.reduce((a,h)=>a+h.s.length,0);
-  total += hv*280;
+  total += hv*300;
   const el=document.getElementById('tplCount');
   if(el) el.textContent = total.toLocaleString('en-IN')+'+';
 })();
@@ -698,29 +872,22 @@ function fill(str){
 }
 
 /* ============================================================
-   TARGET EXTRACTION — pulls URL / Place ID out of any text
+   TARGET EXTRACTION
    ============================================================ */
 function extractTarget(input){
   if(!input) return "";
   const v = String(input).trim();
-
-  // 1. Place ID anywhere in the string
   const place = v.match(/ChIJ[\w-]+/);
   if(place) return place[0];
-
-  // 2. Any http(s) URL
   const urls = v.match(/https?:\/\/[^\s]+/g) || [];
-  // Prefer review-style URLs
   for(const u of urls){
     if(/g\.page\/r\//.test(u) || /writereview/.test(u) ||
        /share\.google/.test(u) || /maps\.app\.goo\.gl/.test(u)) return u;
   }
-  // Then any Google URL
   for(const u of urls){
     if(/google/.test(u) || /goo\.gl/.test(u)) return u;
   }
   if(urls.length) return urls[0];
-
   return v;
 }
 
@@ -733,7 +900,6 @@ function isHosted(){
 }
 
 function resolveInput(){
-  // Priority: URL param → localStorage → CONFIG
   const p = new URLSearchParams(location.search);
   const fromUrl = p.get('p');
   if(fromUrl && fromUrl.trim()){
@@ -753,17 +919,14 @@ function resolveInput(){
 function getReviewUrl(){
   const raw = (activeInput || CONFIG.reviewLink || "").trim();
   const v = extractTarget(raw);
-
   if(!v){
     return "https://www.google.com/maps/search/?api=1&query="+
-      encodeURIComponent("Dr Sheikh Naiyer Furqan Ibn Sina Hospital Srinagar");
+      encodeURIComponent("Dr Sheikh Naiyer Furkan Ibn Sina Hospital Srinagar");
   }
   if(/^ChIJ[\w-]+$/.test(v)){
     return "https://search.google.com/local/writereview?placeid="+encodeURIComponent(v);
   }
-  if(/^https?:\/\//i.test(v)){
-    return v;
-  }
+  if(/^https?:\/\//i.test(v)){ return v; }
   return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(v);
 }
 
@@ -811,6 +974,19 @@ function generateReview(){
     let text = fill(clean.join(" "));
     text = text.replace(/\s+/g,' ').replace(/\s([.,!?])/g,'$1').trim();
 
+    /* ---------- GUARANTEE Ibn Sina Hospital appears ---------- */
+    if(!/ibn\s*sina/i.test(text)){
+      const mention = pick(IBN_SINA_MENTIONS);
+      // insert before the last sentence (the closing)
+      const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+      if(sentences.length >= 2){
+        const last = sentences.pop().trim();
+        text = sentences.join(" ").trim() + " " + mention + " " + last;
+      }else{
+        text = text + " " + mention;
+      }
+    }
+
     if(state.name && state.name.trim()){
       const n=state.name.trim();
       text += "\n\n— " + n.charAt(0).toUpperCase()+n.slice(1);
@@ -818,7 +994,7 @@ function generateReview(){
     return text;
   }catch(err){
     console.error('gen error',err);
-    return "I visited Dr. Sheikh Naiyer Furqan at Ibn Sina Hospital and had a very good experience. He listened carefully and explained everything clearly. Highly recommend — he is one of the best gynecologists in Srinagar.";
+    return "I visited Dr. Sheikh Naiyer Furkan at Ibn Sina Hospital and had a very good experience. He listened carefully and explained everything clearly at Ibn Sina Hospital. Highly recommend — he is one of the best gynecologists in Srinagar.";
   }
 }
 
@@ -956,8 +1132,7 @@ function renderHostWarn(){
   box.innerHTML =
     '<div class="warn">'+
     '<b>⚠ You opened this file from your phone/PC</b>'+
-    'QR codes only work when this page is hosted on the internet. '+
-    'Upload this file to GitHub Pages (or Netlify Drop) first, then open the hosted URL to make the QR.'+
+    'QR codes only work when this page is hosted on the internet.'+
     '</div>';
 }
 
@@ -967,10 +1142,7 @@ function renderQR(){
 
   if(!targetUrl){
     box.innerHTML =
-      '<div class="warn" style="margin:0;">'+
-      'QR code unavailable — this page must be hosted online first. '+
-      'The review flow still works fine on this device.'+
-      '</div>';
+      '<div class="warn" style="margin:0;">QR code unavailable — this page must be hosted online first.</div>';
     $('#linkBox').style.display = 'none';
     return;
   }
